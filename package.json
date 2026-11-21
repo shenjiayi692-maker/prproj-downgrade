@@ -1,0 +1,26 @@
+{
+  "name": "prproj-downgrade",
+  "version": "0.1.0",
+  "description": "Downgrade Premiere Pro project files (.prproj) and Productions so older Premiere versions can open them. Node and browser.",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "bin": {
+    "prproj-downgrade": "bin/prproj-downgrade.js"
+  },
+  "files": ["src", "bin", "README.md", "LICENSE"],
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "keywords": ["premiere-pro", "prproj", "downgrade", "video-editing", "project-file", "production"],
+  "author": "Jiayi",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/shenjiayi692-maker/prproj-downgrade.git" },
+  "homepage": "https://github.com/shenjiayi692-maker/prproj-downgrade#readme",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "fflate": "^0.8.2"
+  }
+}
