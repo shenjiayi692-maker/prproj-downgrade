@@ -24,6 +24,9 @@ export const RELEASES = [
   [33, '2018'], [34, '2018.1'], [35, '2019'], [36, '2019.1'], [37, '2020'],
   [38, '2020.1'], [39, '2021'], [40, '2022'], [41, '2023'], [42, '2024'],
   [43, '2025'], [45, '2026'],
+  // 27.0 (Nov 2026, renamed "Premiere"): version 46, same sparse format as 2026. Not yet in prem-down;
+  // verified in real Premiere (27 -> 2026) on 2026-11-22.
+  [46, '27'],
 ].map(([version, name]) => ({ version, name }));
 
 // Last release that both writes and requires the dense serialisation.

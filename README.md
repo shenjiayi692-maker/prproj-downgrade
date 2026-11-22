@@ -120,6 +120,7 @@ release can be used as a target; the source can be any of them or a newer, not y
 
 | Premiere Pro release | Project version |
 |---|---|
+| 27 (renamed "Premiere") | 46 |
 | 2026 | 45 |
 | 2025 | 43 |
 | 2024 | 42 |
@@ -147,7 +148,7 @@ Productions exist only from 2020.1 (version 38), so that is the oldest Productio
 
 How well it is tested: the automated tests use real Premiere 2025 and 2026 project and
 Production fixtures from prem-down. Opening a downgraded project in real Premiere has been
-checked for 2026 → 2025. Jumps across many releases only change the version number (plus the
+checked for 2026 → 2025 and for 27 → 2026 (Premiere 27, project version 46, which keeps the 2026 file layout). Jumps across many releases only change the version number (plus the
 2026 field repair); very old targets are less tested — please report problems with a sample.
 
 ## Tests

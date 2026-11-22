@@ -6,6 +6,7 @@ import { gunzipSync, gzipSync, strFromU8, strToU8 } from 'fflate';
 import {
   downgrade, inspect, reconstruct, parseXML, render, getProjectVersion, setProjectVersion,
   needsFieldReinsertion, LAST_DENSE, newestKnownVersion, DowngradeError,
+ releaseName,
 } from '../src/prproj.js';
 
 const fx = (n) => new Uint8Array(fs.readFileSync(new URL(`./fixtures/${n}`, import.meta.url)));
@@ -150,4 +151,12 @@ test('sparse source jumping the boundary still reinserts', () => {
   const xml = `<PremiereData Version="3">\n<Project ObjectID="1" ClassID="y" Version="${v}">\n${sparse}\n</Project>\n</PremiereData>`;
   const out = unzip(downgrade(strToU8(xml), LAST_DENSE).bytes);
   assert.ok(out.includes('<LowerBound>') && out.includes('<UpperBound>'));
+});
+
+test('Premiere 27 (46) is recognised and converts to 2026 by re-gating the version only', () => {
+  const xml = `<PremiereData Version="3">\n<Project ObjectID="1" ClassID="y" Version="46">\n${sparse}\n</Project>\n</PremiereData>`;
+  const r = downgrade(gzipSync(strToU8(xml)), 45);
+  assert.equal(r.unrecognised, false);
+  assert.equal(unzip(r.bytes), setProjectVersion(xml, 45));
+  assert.equal(releaseName(46), '27');
 });
