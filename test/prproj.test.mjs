@@ -160,3 +160,17 @@ test('Premiere 27 (46) is recognised and converts to 2026 by re-gating the versi
   assert.equal(unzip(r.bytes), setProjectVersion(xml, 45));
   assert.equal(releaseName(46), '27');
 });
+
+test('real Premiere 27 project (prem-down fixture): recognised, converts to 2026, 2025 restores every bound', () => {
+  const b = fx('fixture_ppro27.prproj');
+  const i = inspect(b);
+  assert.equal(i.version, 46);
+  assert.equal(i.release, '27');
+  assert.equal(i.unrecognised, false);
+  assert.equal(getProjectVersion(unzip(downgrade(b, 45).bytes)), 45);
+  const x = unzip(downgrade(b, 43).bytes);
+  assert.equal(getProjectVersion(x), 43);
+  const params = x.match(/<VideoComponentParam\b[\s\S]*?<\/VideoComponentParam>/g) || [];
+  assert.ok(params.length > 0);
+  for (const p of params) assert.ok(/<LowerBound>/.test(p) && /<UpperBound>/.test(p));
+});

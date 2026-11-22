@@ -148,7 +148,7 @@ Productions exist only from 2020.1 (version 38), so that is the oldest Productio
 
 How well it is tested: the automated tests use real Premiere 2025 and 2026 project and
 Production fixtures from prem-down. Opening a downgraded project in real Premiere has been
-checked for 2026 → 2025 and for 27 → 2026 (Premiere 27, project version 46, which keeps the 2026 file layout). Jumps across many releases only change the version number (plus the
+checked for 2026 → 2025 and for 27 → 2026 (Premiere 27, project version 46, which keeps the 2026 file layout). The tests include a real Premiere 27 project from prem-down, which added 2027 support upstream on 2026-11-21. Jumps across many releases only change the version number (plus the
 2026 field repair); very old targets are less tested — please report problems with a sample.
 
 ## Tests
